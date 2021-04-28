@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Terveeks-Projekti</string>
+    <string name="addExerciseHeader">Lisää liikunta</string>
+    <string name="kmh">\" km/h\"</string>
 </resources>
