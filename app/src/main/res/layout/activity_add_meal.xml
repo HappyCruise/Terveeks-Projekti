@@ -6,4 +6,95 @@
     android:layout_height="match_parent"
     tools:context=".AddMealActivity">
 
+    <Button
+        android:id="@+id/MealButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:text="Lisää ruoka"
+        app:layout_constraintStart_toStartOf="@+id/MvitamiiniVastaus"
+        app:layout_constraintTop_toBottomOf="@+id/MvitamiiniVastaus" />
+
+    <EditText
+        android:id="@+id/MproteiniVastaus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/MvitamiiniVastaus"
+        app:layout_constraintEnd_toEndOf="@+id/MvitamiiniVastaus" />
+
+    <EditText
+        android:id="@+id/MvitamiiniVastaus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="265dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/MkaloriVastaus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/MproteiniVastaus"
+        app:layout_constraintStart_toStartOf="@+id/MproteiniVastaus" />
+
+    <EditText
+        android:id="@+id/MnimiVastaus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="42dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/MkaloriVastaus"
+        app:layout_constraintStart_toStartOf="@+id/MkaloriVastaus" />
+
+    <TextView
+        android:id="@+id/Mnimi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="Nimi"
+        app:layout_constraintBaseline_toBaselineOf="@+id/MnimiVastaus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Mkalori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Kalorit"
+        app:layout_constraintBaseline_toBaselineOf="@+id/MkaloriVastaus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Mproteini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Proteinit"
+        app:layout_constraintBaseline_toBaselineOf="@+id/MproteiniVastaus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Mvitamiini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="11dp"
+        android:text="Vitamiinit"
+        app:layout_constraintBottom_toBottomOf="@+id/MvitamiiniVastaus"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
