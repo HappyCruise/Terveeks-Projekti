@@ -9,9 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TerveeksProjekti">
-        <activity android:name=".AddExerciseActivity"></activity>
-        <activity android:name=".AddUserActivity" />
-        <activity android:name=".AddMealActivity" />
+        <activity android:name=".ViewExerciseActivity"></activity>
+        <activity
+            android:name=".AddExerciseActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddUserActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddMealActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
