@@ -1,15 +1,18 @@
 package com.example.terveeks_projekti;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -17,6 +20,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class AddExerciseActivity extends AppCompatActivity {
@@ -53,7 +62,6 @@ public class AddExerciseActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedSport = (int) id;
-                Log.d("SELECTEDSPORT", String.valueOf(selectedSport));
                 updateCalories();
             }
 
@@ -173,24 +181,6 @@ public class AddExerciseActivity extends AppCompatActivity {
      * Saves the values to shared preferences.
      * @param view
      */
-    public void saveExercise(View view){
-        int burnedCalories = calculateBurnedCalories();
-        int duration = (int) getDuration();
-        float distance = getDistance();
-        Intent intent = new Intent(this, MainActivity.class);
-
-        SharedPreferences prefPut = getSharedPreferences("getExercises", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor prefEditor = prefPut.edit();
-
-        prefEditor.putInt("calories", burnedCalories);
-        prefEditor.putInt("duration", duration);
-        prefEditor.putFloat("distance", distance);
-        prefEditor.apply();
-
-        startActivity(intent);
-    }
-
-
 
     /**
      * Calculates the burned calories with given weight, sport and duration.
@@ -199,17 +189,16 @@ public class AddExerciseActivity extends AppCompatActivity {
 
     private int calculateBurnedCalories(){
         float burnedCalories;
-        float met;
+        float met = 0;
         float weight = getWeight();
         float avgSpeedValue = getAvgSpeed();
         float durationHours = getDuration() / 60;
 
-        switch(selectedSport){
-            case 0: met = 2.5f;
-                break;
-            default: met = 0;
-        }
-        if(selectedSport == 1){
+        //Check the selected sport to set the met value according to speed.
+        if (selectedSport == 0) {
+            met = 2.5f;
+        } 
+        else if(selectedSport == 1){
             if(avgSpeedValue <= 8){
                 met = 7;
             }else if(avgSpeedValue > 8 && avgSpeedValue <= 14.5){
@@ -231,10 +220,12 @@ public class AddExerciseActivity extends AppCompatActivity {
             }
         }
         else if(selectedSport == 3){
-            met = 7;
+            met = 7.2f;
         }
 
         burnedCalories = weight * met * durationHours;
+
+        //Round out calorie count and return it
         return (int) burnedCalories;
     }
 
@@ -242,13 +233,64 @@ public class AddExerciseActivity extends AppCompatActivity {
      * Updates the burned calories counter value
      */
     private void updateCalories(){
-        tvBurnedCalories.setText(String.valueOf(calculateBurnedCalories()));
+        int calories = calculateBurnedCalories();
+        if (calories > 0){
+            tvBurnedCalories.setText(calories + "kcal. Hyvää työtä!");
+        }else{
+            tvBurnedCalories.setText(String.valueOf(calories));
+        }
+
     }
 
     /**
-     * Updates the average speed counter value
+     * Updates the average speed counter value down to the 2nd decimal point.
      */
     private void updateAvgSpeed(){
         tvAvgSpeed.setText(String.format("%.2f", getAvgSpeed()) + " km/h");
     }
+
+
+    public void saveExercise(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        //Get the values
+        int burnedCalories = calculateBurnedCalories();
+        int duration = (int) getDuration();
+        float distance = getDistance();
+
+        //Get the current date.
+        String currDate = new SimpleDateFormat("dd / MM / yyyy", Locale.getDefault()).format(new Date());
+
+        String sport;
+        switch (selectedSport){
+            case 0: sport = "Kävely";
+                break;
+            case 1: sport = "Juoksu";
+                break;
+            case 2: sport = "Pyöräily";
+                break;
+            case 3: sport = "Uinti";
+                break;
+            default: sport = "Kävely";
+        }
+
+        //Create the data set. Use System time as tag.
+        long idTime = System.currentTimeMillis();
+        String dataString = "Päivämäärä: " + currDate + " Laji: " + sport + ". Kesto: " + duration + " Matka: " + distance + " Poltetut kalorit: " + burnedCalories;
+
+        //initialize the editor
+        SharedPreferences prefPut = getSharedPreferences("getExercises", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefPut.edit();
+
+
+
+        //all data
+        prefEditor.putString(String.valueOf(idTime), dataString);
+        //calories and date only
+        prefEditor.putString("CALORIES-"+ idTime,currDate + "-" + burnedCalories);
+        prefEditor.apply();
+
+        //Return to main activity
+        startActivity(intent);
+    }
+
 }
