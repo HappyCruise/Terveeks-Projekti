@@ -28,6 +28,10 @@ public class AddMealActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * returns calories
+     * @return
+     */
     private float getCalories(){
         if(String.valueOf(MKaloriVastaus.getText()).equals("") || MKaloriVastaus.getText() == null){
             return 0;
@@ -36,6 +40,10 @@ public class AddMealActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * returns vitamins
+     * @return
+     */
     private float getVitamins(){
         if(String.valueOf(MvitamiiniVastaus.getText()).equals("") || MvitamiiniVastaus.getText() == null){
             return 0;
@@ -44,11 +52,19 @@ public class AddMealActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * returns calories
+     * @return
+     */
     private int calories() {
         return (int) getCalories();
     }
 
-    //nappula?
+    /**
+     * saves the meal
+     * @param view
+     */
+    //nappula
     public void saveMeal(View view){
         Intent intent = new Intent(this, MainActivity.class);
 

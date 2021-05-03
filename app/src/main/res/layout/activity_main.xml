@@ -16,6 +16,7 @@
         android:text="LISÄÄ LIIKUNTA"
         app:layout_constraintBottom_toTopOf="@+id/btnAddMeal"
         app:layout_constraintEnd_toEndOf="@+id/btnAddMeal"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btnAddMeal"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,8 +81,8 @@
 
     <TextView
         android:id="@+id/tvNutritentsToday"
-        android:layout_width="201dp"
-        android:layout_height="0dp"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="3dp"
         android:text="Tämän päivän ravintoarvot:"
         android:textColor="#000"
