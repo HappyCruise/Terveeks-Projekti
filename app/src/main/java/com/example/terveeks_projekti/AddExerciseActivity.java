@@ -39,7 +39,10 @@ public class AddExerciseActivity extends AppCompatActivity {
     private TextView tvAvgSpeed;
     private TextView tvBurnedCalories;
 
-
+    /**
+     * Adds eventListeners to the Spinner and the text fields.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,16 +180,12 @@ public class AddExerciseActivity extends AppCompatActivity {
         return getDistance() / (getDuration() /60);
     }
 
-    /**
-     * Saves the values to shared preferences.
-     * @param view
-     */
+
 
     /**
      * Calculates the burned calories with given weight, sport and duration.
-     * @return
+     * @param
      */
-
     private int calculateBurnedCalories(){
         float burnedCalories;
         float met = 0;
@@ -249,7 +248,10 @@ public class AddExerciseActivity extends AppCompatActivity {
         tvAvgSpeed.setText(String.format("%.2f", getAvgSpeed()) + " km/h");
     }
 
-
+    /**
+     * Saves the exercise with the input values and returns to MainActivity.
+     * @param view
+     */
     public void saveExercise(View view){
         Intent intent = new Intent(this, MainActivity.class);
         //Get the values
@@ -261,6 +263,7 @@ public class AddExerciseActivity extends AppCompatActivity {
         String currDate = new SimpleDateFormat("dd / MM / yyyy", Locale.getDefault()).format(new Date());
 
         String sport;
+        //Set the value of ´sport´ by checking the selected sport.
         switch (selectedSport){
             case 0: sport = "Kävely";
                 break;
@@ -280,8 +283,6 @@ public class AddExerciseActivity extends AppCompatActivity {
         //initialize the editor
         SharedPreferences prefPut = getSharedPreferences("getExercises", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
-
-
 
         //all data
         prefEditor.putString(String.valueOf(idTime), dataString);

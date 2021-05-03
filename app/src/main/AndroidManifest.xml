@@ -9,12 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TerveeksProjekti">
-        <activity android:name=".ShowExercisesActivity"></activity>
+        <activity
+            android:name=".ShowExercisesActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AddExerciseActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".AddUserActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddMealActivity"
@@ -27,5 +26,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

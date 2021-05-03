@@ -7,62 +7,39 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnCreateUser"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="9dp"
-        android:onClick="createUser"
-        android:text="LUO KÄYTTÄJÄ"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddMeal"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddMeal"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnAddMeal"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="228dp"
-        android:text="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/btnCreateUser"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/btnAddExercise"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="457dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginBottom="14dp"
         android:onClick="addExercise"
         android:text="LISÄÄ LIIKUNTA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddMeal" />
+        app:layout_constraintBottom_toTopOf="@+id/btnAddMeal"
+        app:layout_constraintEnd_toEndOf="@+id/btnAddMeal"
+        app:layout_constraintStart_toStartOf="@+id/btnAddMeal"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAddMeal"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginBottom="12dp"
         android:onClick="addMeal"
         android:text="Lisää Ruokailu"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddExercise"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddExercise"
-        app:layout_constraintStart_toStartOf="@+id/btnAddExercise"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateUser" />
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddExercise" />
 
     <TextView
         android:id="@+id/tvBurnedCaloriesToday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginBottom="38dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="10dp"
         android:text="Tänään poltetut kalorit:"
         android:textColor="#000"
-        app:layout_constraintBottom_toTopOf="@+id/tvGainedCaloriesToday"
+        app:layout_constraintBottom_toTopOf="@+id/tvNutritentsToday"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
@@ -70,12 +47,12 @@
         android:id="@+id/tvGainedCaloriesToday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="8dp"
         android:text="Kalorit: "
         android:textColor="#000"
         app:layout_constraintBottom_toTopOf="@+id/tvCarbsToday"
         app:layout_constraintStart_toStartOf="@+id/tvNutritentsToday"
-        app:layout_constraintTop_toBottomOf="@+id/tvBurnedCaloriesToday" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNutritentsToday" />
 
     <TextView
         android:id="@+id/tvCarbsToday"
@@ -94,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="227dp"
+        android:layout_marginBottom="226dp"
         android:text="Rasva:"
         android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -104,25 +81,26 @@
     <TextView
         android:id="@+id/tvNutritentsToday"
         android:layout_width="201dp"
-        android:layout_height="25dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
         android:text="Tämän päivän ravintoarvot:"
         android:textColor="#000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvGainedCaloriesToday"
         app:layout_constraintStart_toStartOf="@+id/tvBurnedCaloriesToday"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBurnedCaloriesToday" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="30dp"
         android:onClick="showExercises"
         android:text="Lisätyt liikunnat"
         app:layout_constraintBottom_toTopOf="@+id/tvBurnedCaloriesToday"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddExercise"
-        app:layout_constraintStart_toStartOf="@+id/btnAddExercise"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/btnAddMeal"
+        app:layout_constraintStart_toStartOf="@+id/tvFatToday"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddMeal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
