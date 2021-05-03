@@ -28,11 +28,6 @@ public class MainActivity extends AppCompatActivity {
         updateCaloriesShown();
     }
 
-    /**Called when the user clicks the Add User button*/
-    public void createUser(View view){
-        Intent intent = new Intent(this, AddUserActivity.class);
-        startActivity(intent);
-    }
 
     /**Called when the user clicks the Add Meal button*/
     public void addMeal(View view){

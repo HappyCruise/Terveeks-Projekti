@@ -184,7 +184,7 @@ public class AddExerciseActivity extends AppCompatActivity {
 
     /**
      * Calculates the burned calories with given weight, sport and duration.
-     * @return
+     * @param
      */
     private int calculateBurnedCalories(){
         float burnedCalories;
