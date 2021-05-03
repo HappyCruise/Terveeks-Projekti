@@ -42,6 +42,9 @@ public class ShowExercisesActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Gets the values from sharedPreferences.
+     */
     private void getValues(){
         //Get the data and map it
         SharedPreferences prefGet = getSharedPreferences("getExercises", Activity.MODE_PRIVATE);
