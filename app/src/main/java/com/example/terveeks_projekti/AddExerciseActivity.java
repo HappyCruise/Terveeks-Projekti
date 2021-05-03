@@ -263,6 +263,7 @@ public class AddExerciseActivity extends AppCompatActivity {
         String currDate = new SimpleDateFormat("dd / MM / yyyy", Locale.getDefault()).format(new Date());
 
         String sport;
+        //Set the value of ´sport´ by checking the selected sport.
         switch (selectedSport){
             case 0: sport = "Kävely";
                 break;
@@ -282,8 +283,6 @@ public class AddExerciseActivity extends AppCompatActivity {
         //initialize the editor
         SharedPreferences prefPut = getSharedPreferences("getExercises", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
-
-
 
         //all data
         prefEditor.putString(String.valueOf(idTime), dataString);
